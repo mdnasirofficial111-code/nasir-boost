@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASIR BOOST - Grow Your Social Media Organically</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: { 50: '#ecfdf5', 100: '#d1fae5', 500: '#10b981', 600: '#059669', 700: '#047857' },
+                        navy: { 800: '#1e293b', 900: '#101828' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('home')">
+                <div class="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    NB
+                </div>
+                <div>
+                    <span class="font-extrabold text-xl text-navy-900 tracking-tight">NASIR <span class="text-emerald-500">BOOST</span></span>
+                    <p class="text-xs text-gray-500 hidden sm:block">Organic SMM Growth</p>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-6 font-medium text-gray-600">
+                <button onclick="switchTab('home')" class="hover:text-emerald-600 transition">হোম (Home)</button>
+                <button onclick="scrollToServices()" class="hover:text-emerald-600 transition">সার্ভিসসমূহ (Services)</button>
+                <button onclick="switchTab('order-status')" class="hover:text-emerald-600 transition">অর্ডার ট্র্যাকিং (Order Lookup)</button>
+                <button onclick="switchTab('support')" class="hover:text-emerald-600 transition">সাপোর্ট (Support)</button>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button onclick="switchTab('admin')" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-lg font-semibold transition border flex items-center gap-1">
+                    <i data-lucide="lock" class="w-3.5 h-3.5"></i> Admin
+                </button>
+                <a href="#order-section" onclick="switchTab('home')" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-sm px-4 py-2 rounded-xl transition shadow-md flex items-center gap-1.5">
+                    <i data-lucide="shopping-bag" class="w-4 h-4"></i> নতুন অর্ডার
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="flex-grow">
+        <!-- Home Section -->
+        <div id="tab-home" class="tab-content">
+            <!-- Hero -->
+            <section class="bg-gradient-to-b from-emerald-50/50 to-white py-16 px-4 sm:px-6 lg:px-8 text-center border-b">
+                <div class="max-w-4xl mx-auto space-y-6">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider inline-block">
+                        100% অর্গানিক ও নিরাপদ প্রমোশন
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl font-black text-navy-900 leading-tight">
+                        Grow Your Social Media <span class="text-emerald-500">Organically</span>
+                    </h1>
+                    <p class="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">
+                        ফেসবুক, টিকটক এবং ইউটিউবে রিয়েল অডিয়েন্স ও সঠিক টার্গেটিংয়ের মাধ্যমে আপনার ব্র্যান্ড ও কন্টেন্ট প্রমোট করুন কোনো প্রকার ফেক ভিউ বা বট ছাড়াই।
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4 pt-2">
+                        <a href="#services-list" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition flex items-center gap-2">
+                            সার্ভিসসমূহ দেখুন <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <button onclick="switchTab('order-status')" class="bg-white hover:bg-gray-50 text-navy-900 border border-gray-300 font-bold px-6 py-3 rounded-xl transition shadow-sm">
+                            অর্ডার স্ট্যাটাস চেক করুন
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section id="services-list" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-navy-900">আমাদের অর্গানিক সার্ভিসসমূহ</h2>
+                    <p class="text-gray-500 mt-2">আপনার সঠিক সোশ্যাল মিডিয়া প্ল্যাটফর্মটি নির্বাচন করুন</p>
+                </div>
+
+                <!-- Category Tabs -->
+                <div class="flex justify-center gap-2 sm:gap-4 mb-8">
+                    <button onclick="filterServices('all')" id="btn-cat-all" class="cat-btn bg-emerald-500 text-white font-semibold px-4 py-2 rounded-lg text-sm transition">সব সার্ভিস</button>
+                    <button onclick="filterServices('facebook')" id="btn-cat-facebook" class="cat-btn bg-white hover:bg-gray-100 text-gray-700 font-semibold px-4 py-2 rounded-lg text-sm border transition">Facebook</button>
+                    <button onclick="filterServices('tiktok')" id="btn-cat-tiktok" class="cat-btn bg-white hover:bg-gray-100 text-gray-700 font-semibold px-4 py-2 rounded-lg text-sm border transition">TikTok</button>
+                    <button onclick="filterServices('youtube')" id="btn-cat-youtube" class="cat-btn bg-white hover:bg-gray-100 text-gray-700 font-semibold px-4 py-2 rounded-lg text-sm border transition">YouTube</button>
+                </div>
+
+                <!-- Cards Grid -->
+                <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Service cards rendered by JS -->
+                </div>
+            </section>
+
+            <!-- Order Form Section -->
+            <section id="order-section" class="bg-slate-100 py-16 border-t border-b">
+                <div class="max-w-3xl mx-auto px-4 sm:px-6">
+                    <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-md border">
+                        <h2 class="text-2xl font-bold text-navy-900 mb-1">নতুন অর্ডার জমা দিন (Place Order)</h2>
+                        <p class="text-gray-500 text-sm mb-6">আপনার প্রয়োজন ও বাজেট অনুযায়ী তথ্য পুরণ করুন</p>
+
+                        <form id="order-form" onsubmit="handleOrderSubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">আপনার নাম (Name)</label>
+                                <input type="text" id="cust-name" required placeholder="উদাহরণ: মো: নাছির উদ্দিন" class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">ইমেইল বা মোবাইল (Email/Phone)</label>
+                                    <input type="text" id="cust-contact" required placeholder="01700000000" class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">সার্ভিস নির্বাচন করুন</label>
+                                    <select id="cust-service" onchange="updatePriceCalculation()" required class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-emerald-500 outline-none bg-white">
+                                        <!-- Options added by JS -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">পেইজ/ভিডিও Link (Public URL)</label>
+                                <input type="url" id="cust-url" required placeholder="https://facebook.com/yourpage" class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">বিশেষ নির্দেশনা (Requirements/Details)</label>
+                                <textarea id="cust-req" rows="3" placeholder="টার্গেটেড অডিয়েন্স, এলাকা বা কন্টেন্টের বিশেষ কোনো নির্দেশনা থাকলে লিখুন..." class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-emerald-500 outline-none"></textarea>
+                            </div>
+
+                            <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-200 flex justify-between items-center">
+                                <div>
+                                    <span class="text-xs text-gray-500 block">মোট প্রদেয় বিল</span>
+                                    <span id="calculated-price" class="text-xl font-bold text-emerald-700">৳ 500 BDT</span>
+                                </div>
+                                <span class="text-xs bg-emerald-200 text-emerald-800 font-semibold px-2.5 py-1 rounded">ম্যানুয়াল পেমেন্ট (bKash/Nagad)</span>
+                            </div>
+
+                            <div class="bg-slate-50 p-3 rounded-lg border text-xs text-gray-500 space-y-1">
+                                <p class="font-semibold text-slate-700">📌 পেমেন্ট নির্দেশিকা:</p>
+                                <p>অর্ডার সাবমিট করার পর আপনাকে রেফারেন্স কোড ও বিকাশ/নগদ নম্বর দেওয়া হবে। সেখানে টাকা পাঠিয়ে ট্রানজেকশন আইডি সাবমিট করতে পারবেন।</p>
+                            </div>
+
+                            <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-xl transition shadow-md flex justify-center items-center gap-2">
+                                <i data-lucide="check-circle" class="w-5 h-5"></i> কনফার্ম ও অর্ডার করুন
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How It Works & FAQs -->
+            <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-navy-900">কিভাবে কাজ করে? (How It Works)</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                        <div class="bg-white p-6 rounded-xl border text-center space-y-2">
+                            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto font-bold text-xl">1</div>
+                            <h3 class="font-bold text-lg">সার্ভিস সিলেক্ট করুন</h3>
+                            <p class="text-sm text-gray-500">আপনার প্ল্যাটফর্ম ও প্রয়োজন অনুযায়ী সার্ভিস বেছে নিন এবং বিবরণ পুরণ করুন।</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border text-center space-y-2">
+                            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto font-bold text-xl">2</div>
+                            <h3 class="font-bold text-lg">পেমেন্ট সম্পন্ন করুন</h3>
+                            <p class="text-sm text-gray-500">অর্ডার কনফার্মেশনের পর আমাদের বিকাশ/নগদে পেমেন্ট পাঠিয় স্ট্যাটাস আপডেটের অপেক্ষা করুন।</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border text-center space-y-2">
+                            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto font-bold text-xl">3</div>
+                            <h3 class="font-bold text-lg">অর্গানিক গ্রোথ দেখুন</h3>
+                            <p class="text-sm text-gray-500">আমাদের টিম আপনার কন্টেন্ট সঠিক অডিয়েন্সের কাছে প্রমোট ও ক্যাম্পেইন সেটআপ করবে।</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Order Lookup Section -->
+        <div id="tab-order-status" class="tab-content hidden max-w-2xl mx-auto px-4 py-16">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border shadow-sm space-y-6">
+                <h2 class="text-2xl font-bold text-navy-900 text-center">অর্ডার ট্র্যাকিং (Order Status Lookup)</h2>
+                <div class="flex gap-2">
+                    <input type="text" id="lookup-ref" placeholder="Order Ref (যেমন: NB-839210)" class="flex-grow border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+                    <button onclick="lookupOrder()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-4 py-2 rounded-lg transition text-sm flex items-center gap-1">
+                        <i data-lucide="search" class="w-4 h-4"></i> খুঁজুন
+                    </button>
+                </div>
+                <div id="lookup-result" class="hidden border-t pt-4 space-y-3">
+                    <!-- Dynamic Result -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Support Section -->
+        <div id="tab-support" class="tab-content hidden max-w-2xl mx-auto px-4 py-16">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border shadow-sm space-y-4">
+                <h2 class="text-2xl font-bold text-navy-900">কাস্টমার সাপোর্ট (Support Request)</h2>
+                <form onsubmit="handleSupportSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">আপনার নাম</label>
+                        <input type="text" id="supp-name" required class="w-full border rounded-lg px-3 py-2 text-sm outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">যোগাযোগের নম্বর/ইমেইল</label>
+                        <input type="text" id="supp-contact" required class="w-full border rounded-lg px-3 py-2 text-sm outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">মেসেজ/সমস্যা বিবরণ</label>
+                        <textarea id="supp-msg" rows="4" required class="w-full border rounded-lg px-3 py-2 text-sm outline-none"></textarea>
+                    </div>
+                    <button type="submit" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-2.5 rounded-xl transition text-sm">মেসেজ পাঠান</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard Section -->
+        <div id="tab-admin" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <!-- Admin Login View -->
+            <div id="admin-login-view" class="max-w-md mx-auto bg-white p-8 rounded-2xl border shadow-sm space-y-4">
+                <h2 class="text-xl font-bold text-navy-900 text-center">অ্যাডমিন লগইন</h2>
+                <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">পাসওয়ার্ড</label>
+                        <input type="password" id="admin-pass" placeholder="পাসওয়ার্ড দিন (Default: admin123)" class="w-full border rounded-lg px-3 py-2 text-sm outline-none">
+                    </div>
+                    <button type="submit" class="w-full bg-navy-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-lg text-sm transition">Login</button>
+                </form>
+            </div>
+
+            <!-- Admin Panel View -->
+            <div id="admin-panel-view" class="hidden space-y-6">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-navy-900">Admin Management Panel</h2>
+                        <span class="text-xs text-gray-500">NASIR BOOST Control Center</span>
+                    </div>
+                    <button onclick="adminLogout()" class="bg-red-50 hover:bg-red-100 text-red-600 text-xs font-semibold px-3 py-2 rounded-lg border border-red-200">Logout</button>
+                </div>
+
+                <!-- Admin Orders Table -->
+                <div class="bg-white rounded-2xl border overflow-hidden shadow-sm">
+                    <div class="p-4 bg-gray-50 border-b flex justify-between items-center">
+                        <h3 class="font-bold text-gray-800">অর্ডার সমূহ (Orders List)</h3>
+                        <span id="admin-order-count" class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2 py-1 rounded-full">0 Orders</span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs text-gray-600">
+                            <thead class="bg-gray-100 text-gray-700 uppercase">
+                                <tr>
+                                    <th class="p-3">Ref ID</th>
+                                    <th class="p-3">Customer</th>
+                                    <th class="p-3">Service</th>
+                                    <th class="p-3">Amount</th>
+                                    <th class="p-3">Status</th>
+                                    <th class="p-3">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-orders-body" class="divide-y">
+                                <!-- Dynamic Orders -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 text-gray-400 text-xs py-8 border-t border-slate-800 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="space-y-2">
+                <span class="font-extrabold text-base text-white">NASIR <span class="text-emerald-500">BOOST</span></span>
+                <p>Grow Your Social Media Organically in Bangladesh.</p>
+                <p class="text-slate-500">© 2026 NASIR BOOST. All rights reserved.</p>
+            </div>
+            <div class="space-y-1">
+                <span class="font-bold text-white block mb-1">গুরুত্বপূর্ণ লিংক</span>
+                <p><a href="#" class="hover:underline">Privacy Policy</a></p>
+                <p><a href="#" class="hover:underline">Terms of Service</a></p>
+                <p><a href="#" class="hover:underline">Refund Policy</a></p>
+            </div>
+            <div class="space-y-1">
+                <span class="font-bold text-white block mb-1">সতর্কতা ও নীতি</span>
+                <p>আমরা কোনো প্রকার ফেক ফলোয়ার, ফেক লাইক বা বট সার্ভিস বিক্রি করি না। শুধুমাত্র অর্গানিক প্রমোশন ও কনসালটেন্সি প্রদান করা হয়।</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App Logic JS -->
+    <script>
+        // Sample Initial Services Data
+        const defaultServices = [
+            { id: 'fb-page', name: 'Facebook Page Organic Reach Boost', category: 'facebook', price: 500, delivery: '2-3 Days', desc: 'পেইজের রিচ ও অর্গানিক এনগেজমেন্ট বাড়ানোর প্রমোশন প্ল্যান।' },
+            { id: 'fb-ads', name: 'Facebook Ad Campaign Setup & Audit', category: 'facebook', price: 1000, delivery: '1-2 Days', desc: 'প্রফেশনাল এড একাউন্ট ও টার্গেটেড অডিয়েন্স সেটআপ সাপোর্ট।' },
+            { id: 'tt-boost', name: 'TikTok Video Content Reach Plan', category: 'tiktok', price: 400, delivery: '1-2 Days', desc: 'ভিডিও এসইও হ্যাশট্যাগ ও অর্গানিক এনগেজমেন্ট গাইড।' },
+            { id: 'yt-seo', name: 'YouTube Channel SEO & Title Optimization', category: 'youtube', price: 800, delivery: '3-4 Days', desc: 'ইউটিউব ভিডিও থাম্বনেইল, টাইটেল ও কিওয়ার্ড অপটিমাইজেশন।' }
+        ];
+
+        let services = JSON.parse(localStorage.getItem('nb_services')) || defaultServices;
+        let orders = JSON.parse(localStorage.getItem('nb_orders')) || [];
+        let supports = JSON.parse(localStorage.getItem('nb_supports')) || [];
+
+        // Save data to localStorage
+        function saveData() {
+            localStorage.setItem('nb_services', JSON.stringify(services));
+            localStorage.setItem('nb_orders', JSON.stringify(orders));
+            localStorage.setItem('nb_supports', JSON.stringify(supports));
+        }
+
+        // Initialize Icons
+        document.addEventListener("DOMContentLoaded", () => {
+            lucide.createIcons();
+            renderServices('all');
+            populateServiceDropdown();
+            renderAdminOrders();
+        });
+
+        // Tab Switcher
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToServices() {
+            switchTab('home');
+            setTimeout(() => {
+                document.getElementById('services-list').scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+
+        // Render Services
+        function renderServices(category) {
+            const grid = document.getElementById('services-grid');
+            grid.innerHTML = '';
+            
+            const filtered = category === 'all' ? services : services.filter(s => s.category === category);
+            
+            filtered.forEach(s => {
+                grid.innerHTML += `
+                    <div class="bg-white border rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-2 py-1 rounded">${s.category}</span>
+                            <h3 class="font-bold text-lg text-navy-900 mt-2">${s.name}</h3>
+                            <p class="text-gray-500 text-xs mt-2 leading-relaxed">${s.desc}</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-gray-400 block">মূল্য</span>
+                                <span class="font-extrabold text-lg text-emerald-600">৳ ${s.price} <span class="text-xs text-gray-500">BDT</span></span>
+                            </div>
+                            <button onclick="selectServiceForOrder('${s.id}')" class="bg-navy-900 hover:bg-slate-800 text-white font-semibold text-xs px-4 py-2 rounded-xl transition">
+                                অর্ডার করুন
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function filterServices(cat) {
+            document.querySelectorAll('.cat-btn').forEach(b => {
+                b.classList.remove('bg-emerald-500', 'text-white');
+                b.classList.add('bg-white', 'text-gray-700');
+            });
+            document.getElementById(`btn-cat-${cat}`).classList.remove('bg-white', 'text-gray-700');
+            document.getElementById(`btn-cat-${cat}`).classList.add('bg-emerald-500', 'text-white');
+            renderServices(cat);
+        }
+
+        function populateServiceDropdown() {
+            const select = document.getElementById('cust-service');
+            select.innerHTML = '';
+            services.forEach(s => {
+                select.innerHTML += `<option value="${s.id}">${s.name} - ৳${s.price} BDT</option>`;
+            });
+            updatePriceCalculation();
+        }
+
+        function updatePriceCalculation() {
+            const selectedId = document.getElementById('cust-service').value;
+            const s = services.find(x => x.id === selectedId);
+            if (s) {
+                document.getElementById('calculated-price').innerText = `৳ ${s.price} BDT`;
+            }
+        }
+
+        function selectServiceForOrder(serviceId) {
+            switchTab('home');
+            document.getElementById('cust-service').value = serviceId;
+            updatePriceCalculation();
+            document.getElementById('order-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Handle Order Form Submit
+        function handleOrderSubmit(e) {
+            e.preventDefault();
+            const serviceId = document.getElementById('cust-service').value;
+            const serviceObj = services.find(s => s.id === serviceId);
+            const refCode = 'NB-' + Math.floor(100000 + Math.random() * 900000);
+
+            const newOrder = {
+                ref: refCode,
+                name: document.getElementById('cust-name').value,
+                contact: document.getElementById('cust-contact').value,
+                serviceName: serviceObj ? serviceObj.name : 'Unknown Service',
+                amount: serviceObj ? serviceObj.price : 0,
+                url: document.getElementById('cust-url').value,
+                req: document.getElementById('cust-req').value,
+                status: 'Pending Payment',
+                date: new Date().toLocaleDateString('bn-BD')
+            };
+
+            orders.push(newOrder);
+            saveData();
+
+            alert(`আপনার অর্ডার সফলভাবে সংরক্ষিত হয়েছে!\n\nরেফারেন্স আইডি: ${refCode}\nদয়া করে আইডিটি সেভ করে রাখুন।`);
+            document.getElementById('order-form').reset();
+            updatePriceCalculation();
+            renderAdminOrders();
+            
+            // Redirect to lookup tab with reference
+            switchTab('order-status');
+            document.getElementById('lookup-ref').value = refCode;
+            lookupOrder();
+        }
+
+        // Lookup Order
+        function lookupOrder() {
+            const ref = document.getElementById('lookup-ref').value.trim();
+            const resBox = document.getElementById('lookup-result');
+            const found = orders.find(o => o.ref.toLowerCase() === ref.toLowerCase());
+
+            resBox.classList.remove('hidden');
+            if (found) {
+                resBox.innerHTML = `
+                    <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-200 text-xs space-y-2">
+                        <div class="flex justify-between font-bold text-sm text-navy-900 border-b pb-2">
+                            <span>অর্ডার আইডি: ${found.ref}</span>
+                            <span class="text-emerald-600">${found.status}</span>
+                        </div>
+                        <p><strong>কাস্টমার:</strong> ${found.name}</p>
+                        <p><strong>সার্ভিস:</strong> ${found.serviceName}</p>
+                        <p><strong>বিল:</strong> ৳ ${found.amount} BDT</p>
+                        <p><strong>তারিখ:</strong> ${found.date}</p>
+                    </div>
+                `;
+            } else {
+                resBox.innerHTML = `<p class="text-red-500 text-xs text-center">কোনো অর্ডার পাওয়া যায়নি! সঠিক রেফারেন্স কোড দিন।</p>`;
+            }
+        }
+
+        // Support Submit
+        function handleSupportSubmit(e) {
+            e.preventDefault();
+            const supp = {
+                name: document.getElementById('supp-name').value,
+                contact: document.getElementById('supp-contact').value,
+                msg: document.getElementById('supp-msg').value,
+                date: new Date().toLocaleDateString('bn-BD')
+            };
+            supports.push(supp);
+            saveData();
+            alert('আপনার মেসেজ সফলভাবে প্রাপ্ত হয়েছে। আমরা দ্রুত আপনার সাথে যোগাযোগ করব।');
+            e.target.reset();
+        }
+
+        // Admin Panel Logic
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const pass = document.getElementById('admin-pass').value;
+            if (pass === 'admin123') {
+                document.getElementById('admin-login-view').classList.add('hidden');
+                document.getElementById('admin-panel-view').classList.remove('hidden');
+            } else {
+                alert('ভুল পাসওয়ার্ড!');
+            }
+        }
+
+        function adminLogout() {
+            document.getElementById('admin-login-view').classList.remove('hidden');
+                document.getElementById('admin-panel-view').classList.add('hidden');
+        }
+
+        function renderAdminOrders() {
+            const tbody = document.getElementById('admin-orders-body');
+            document.getElementById('admin-order-count').innerText = `${orders.length} Orders`;
+            tbody.innerHTML = '';
+
+            orders.forEach((o, index) => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td class="p-3 font-bold text-slate-800">${o.ref}</td>
+                        <td class="p-3">${o.name}<br><span class="text-gray-400">${o.contact}</span></td>
+                        <td class="p-3">${o.serviceName}</td>
+                        <td class="p-3 font-semibold">৳${o.amount}</td>
+                        <td class="p-3">
+                            <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded">${o.status}</span>
+                        </td>
+                        <td class="p-3">
+                            <select onchange="updateOrderStatus(${index}, this.value)" class="border text-[11px] rounded p-1">
+                                <option value="Pending Payment" ${o.status === 'Pending Payment' ? 'selected' : ''}>Pending Payment</option>
+                                <option value="Payment Verification" ${o.status === 'Payment Verification' ? 'selected' : ''}>Payment Verification</option>
+                                <option value="Processing" ${o.status === 'Processing' ? 'selected' : ''}>Processing</option>
+                                <option value="Completed" ${o.status === 'Completed' ? 'selected' : ''}>Completed</option>
+                                <option value="Cancelled" ${o.status === 'Cancelled' ? 'selected' : ''}>Cancelled</option>
+                            </select>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function updateOrderStatus(index, newStatus) {
+            orders[index].status = newStatus;
+            saveData();
+            alert('অর্ডার স্ট্যাটাস আপডেট করা হয়েছে!');
+        }
+    </script>
+</body>
+</html>
